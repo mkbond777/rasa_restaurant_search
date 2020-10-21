@@ -1,0 +1,91 @@
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- negate
+- greet
+- restaurant_search
+- affirm
+- mailid
+- goodbye
+- stop
+entities:
+- budget_type
+- cuisine
+- emailid
+- location
+slots:
+  budget_type:
+    type: categorical
+    influence_conversation: true
+    values:
+    - low
+    - medium
+    - high
+    - __other__
+  cuisine:
+    type: text
+    influence_conversation: true
+  emailid:
+    type: text
+    influence_conversation: true
+  location:
+    type: text
+    influence_conversation: true
+responses:
+  utter_ask_cuisine:
+  - buttons:
+    - payload: Chinese
+      title: Chinese
+    - payload: Italian
+      title: Italian
+    - payload: South Indian
+      title: South Indian
+    - payload: North Indian
+      title: North Indian
+    text: what kind of cuisine would you like?
+  utter_ask_budget:
+  - buttons:
+    - payload: low
+      title: Lesser than Rs. 300
+    - payload: medium
+      title: Rs. 300 to 700
+    - payload: high
+      title: More than 700
+    text: What price range are you looking at?
+  utter_ask_howcanhelp:
+  - text: how can I help you?
+  utter_ask_location:
+  - text: In what location?
+  utter_default:
+  - text: i cannot understand
+  utter_goodbye:
+  - text: goodbye :(
+  - text: Bye-bye
+  utter_greet:
+  - text: hey there! How may i help you
+  - text: Hi, How can I help you!
+  - text: Hey, How is it going. How May I help you Today
+  utter_ask_mailid:
+  - text: What is your eamil id?
+  - text: Please provide your email id?
+  utter_ask_mail_send:
+  - text: Do you want me to send these information over mail?
+  - text: Should I send these information over mail?
+  utter_mail_sent:
+  - text: I have sent you mail with all the deatils.
+  - text: Mail has been sent.
+actions:
+- action_search_restaurants
+- action_send_mail
+- utter_ask_budget
+- utter_ask_cuisine
+- utter_ask_howcanhelp
+- utter_ask_location
+- utter_ask_mail_send
+- utter_ask_mailid
+- utter_default
+- utter_goodbye
+- utter_greet
+- utter_mail_sent
+version: '2.0'

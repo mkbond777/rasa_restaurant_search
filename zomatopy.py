@@ -1,6 +1,8 @@
 import requests
 import ast
 
+import json
+
 base_url = "https://developers.zomato.com/api/v2.1/"
 
 
@@ -222,10 +224,9 @@ class Zomato:
         Returns a list of Restaurant IDs.
         """
         cuisines = "%2C".join(cuisines.split(","))
-        if str(limit).isalpha() == True:
-            raise ValueError('LimitNotInteger')
         headers = {'Accept': 'application/json', 'user-key': self.user_key}
-        url = base_url + "search?q=" + str(query) + "&count=20" + "&lat=" + str(latitude) + "&lon=" + str(longitude) + "&cuisines=" + str(cuisines) + "&sort=rating&order=desc" + "&start=" + offset
+        url = base_url + "search?q=" + str(query) + "&count=20" + "&lat=" + str(latitude) + "&lon=" + str(longitude) \
+              + "&cuisines=" + str(cuisines) + "&sort=rating&order=desc" + "&start=" + str(offset)
         r = (requests.get(url, headers=headers).content).decode("utf-8")
         return r#a = ast.literal_eval(r)
 
@@ -298,7 +299,7 @@ class Zomato:
             if a['code'] == 440:
                 raise Exception('ApiLimitExceeded')
 
-    def get_restaurants(lat,lon,cuisine,budget):
+    def get_restaurants(self,lat,lon,cuisine,budget):
         response=[]
         count = 0
         for offset in range(0,100,20):
@@ -307,24 +308,24 @@ class Zomato:
             results = self.restaurant_search("", lat, lon, cuisine, offset)
             d = json.loads(results)
             if d['results_found'] == 0:
-                response= response.append("no results")
+                response.append("no results")
                 break
             else:
                 if budget == 'low':
                     for restaurant in d['restaurants']:
                         if restaurant['restaurant']['average_cost_for_two'] <= 300:
                             count += 1
-                            response=response.append(restaurant['restaurant']['name']+ " in "+ restaurant['restaurant']['location']['address'] + " has been rated " + restaurant['restaurant']['user_rating']['aggregate_rating'])
+                            response.append(restaurant['restaurant']['name']+ " in "+ restaurant['restaurant']['location']['address'] + " has been rated " + restaurant['restaurant']['user_rating']['aggregate_rating'])
                 elif budget == 'medium':
                     for restaurant in d['restaurants']:
                         if restaurant['restaurant']['average_cost_for_two'] > 300 and restaurant['restaurant']['average_cost_for_two'] <= 700:
                             count += 1
-                            response=response.append(restaurant['restaurant']['name']+ " in "+ restaurant['restaurant']['location']['address'] + " has been rated " + restaurant['restaurant']['user_rating']['aggregate_rating'])
+                            response.append(restaurant['restaurant']['name']+ " in "+ restaurant['restaurant']['location']['address'] + " has been rated " + restaurant['restaurant']['user_rating']['aggregate_rating'])
                 elif budget == 'high':
                     for restaurant in d['restaurants']:
                         if restaurant['restaurant']['average_cost_for_two'] > 700:
                             count += 1
-                            response=response.append(restaurant['restaurant']['name']+ " in "+ restaurant['restaurant']['location']['address'] + " has been rated " + restaurant['restaurant']['user_rating']['aggregate_rating'])
+                            response.append(restaurant['restaurant']['name']+ " in "+ restaurant['restaurant']['location']['address'] + " has been rated " + restaurant['restaurant']['user_rating']['aggregate_rating'])
 
         return response
 

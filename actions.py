@@ -33,12 +33,13 @@ class ActionSearchRestaurants(Action):
 
 		response = zomato.get_restaurants(lat,lon,cuisine_code,budget)
 
-		response.remove("no results")
-
+		if "no results" in response:
+			response.remove("no results")
+		print("responses----------------------------->",response)
 		if not response:
 			dispatcher.utter_message("-----"+"no results")
 		else:
-			for i in response:
+			for i in response[:5]:
 				dispatcher.utter_message("-----"+i)
 		return [SlotSet('location',loc)]
 

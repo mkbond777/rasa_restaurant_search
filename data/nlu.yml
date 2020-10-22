@@ -11,12 +11,14 @@ nlu:
     - [Italian](cuisine)
     - [medium](budget_type)
     - [Patna](location)
+    - Show me some [Italian](cuisine) [high](budget_type) budget restaurant in [Mumbai](location)
 - intent: affirm
   examples: |
     - yes
     - thanks
 - intent: mailid
   examples: |
+    - [mkbond777@gmail.com](emailid)
     - [mkbond777@gmail.com](emailid)
 - intent: negate
   examples: |

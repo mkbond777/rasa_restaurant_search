@@ -12,7 +12,7 @@
 * restaurant_search{"budget_type": "high"}
     - slot{"budget_type": "high"}
     - action_search_restaurants
-    - slot{"location": "delhi"}
+    - slot{"restaurants": ["Coppetto Artisan Gelato in Shop 3, Plot 117, Muzzafar Manor, Waterfield Road, Linking Road, Bandra West, delhi has been rated 4.6","Firangi Bake in Nalasopara, delhi has been rated 4.6","Theobroma in Shop 8, Ground Floor, City Park Building, Central Avenue, Hiranandani Business Park, Phase 2 Dmart, Powai, delhi has been rated 4.5","Theobroma in 24, Cusrow Baug, Shahid Bhagat Singh Road, Colaba Causeway, Colaba, delhi has been rated 4.5","Food And Taste Theory in Shop 25, 2nd Floor, Phoenix Market City, LBS Marg, Kurla, delhi has been rated 4.5"]}
     - utter_ask_mail_send
 * affirm
     - utter_ask_mailid
@@ -36,7 +36,7 @@
 * restaurant_search{"budget_type": "medium"}
     - slot{"budget_type": "medium"}
     - action_search_restaurants
-    - slot{"location": "delhi"}
+    - slot{"restaurants": ["Coppetto Artisan Gelato in Shop 3, Plot 117, Muzzafar Manor, Waterfield Road, Linking Road, Bandra West, delhi has been rated 4.6","Firangi Bake in Nalasopara, delhi has been rated 4.6","Theobroma in Shop 8, Ground Floor, City Park Building, Central Avenue, Hiranandani Business Park, Phase 2 Dmart, Powai, delhi has been rated 4.5","Theobroma in 24, Cusrow Baug, Shahid Bhagat Singh Road, Colaba Causeway, Colaba, delhi has been rated 4.5","Food And Taste Theory in Shop 25, 2nd Floor, Phoenix Market City, LBS Marg, Kurla, delhi has been rated 4.5"]}
     - utter_ask_mail_send
 * affirm
     - utter_ask_mailid
@@ -63,7 +63,7 @@
 * restaurant_search{"budget_type": "low"}
     - slot{"budget_type": "low"}
     - action_search_restaurants
-    - slot{"location": "delhi"}
+    - slot{"restaurants": ["Coppetto Artisan Gelato in Shop 3, Plot 117, Muzzafar Manor, Waterfield Road, Linking Road, Bandra West, delhi has been rated 4.6","Firangi Bake in Nalasopara, delhi has been rated 4.6","Theobroma in Shop 8, Ground Floor, City Park Building, Central Avenue, Hiranandani Business Park, Phase 2 Dmart, Powai, delhi has been rated 4.5","Theobroma in 24, Cusrow Baug, Shahid Bhagat Singh Road, Colaba Causeway, Colaba, delhi has been rated 4.5","Food And Taste Theory in Shop 25, 2nd Floor, Phoenix Market City, LBS Marg, Kurla, delhi has been rated 4.5"]}
     - utter_ask_mail_send
 * negate
     - utter_goodbye
@@ -108,7 +108,7 @@
 * restaurant_search{"budget_type": "high"}
     - slot{"budget_type": "high"}
     - action_search_restaurants
-    - slot{"location": "bangalore"}
+    - slot{"restaurants": ["Coppetto Artisan Gelato in Shop 3, Plot 117, Muzzafar Manor, Waterfield Road, Linking Road, Bandra West, bangalore has been rated 4.6","Firangi Bake in Nalasopara, bangalore has been rated 4.6","Theobroma in Shop 8, Ground Floor, City Park Building, Central Avenue, Hiranandani Business Park, Phase 2 Dmart, Powai, bangalore has been rated 4.5","Theobroma in 24, Cusrow Baug, Shahid Bhagat Singh Road, Colaba Causeway, Colaba, bangalore has been rated 4.5","Food And Taste Theory in Shop 25, 2nd Floor, Phoenix Market City, LBS Marg, Kurla, bangalore has been rated 4.5"]}
 
     
     
@@ -120,7 +120,7 @@
     - slot{"location": "mumbai"}
     - slot{"budget_type": "high"}
     - action_search_restaurants
-    - slot{"location": "mumbai"}
+    - slot{"restaurants": ["Coppetto Artisan Gelato in Shop 3, Plot 117, Muzzafar Manor, Waterfield Road, Linking Road, Bandra West, Mumbai has been rated 4.6","Firangi Bake in Nalasopara, Mumbai has been rated 4.6","Theobroma in Shop 8, Ground Floor, City Park Building, Central Avenue, Hiranandani Business Park, Phase 2 Dmart, Powai, Mumbai has been rated 4.5","Theobroma in 24, Cusrow Baug, Shahid Bhagat Singh Road, Colaba Causeway, Colaba, Mumbai has been rated 4.5","Food And Taste Theory in Shop 25, 2nd Floor, Phoenix Market City, LBS Marg, Kurla, Mumbai has been rated 4.5"]}
     - utter_ask_mail_send
 * affirm
     - utter_ask_mailid
@@ -142,6 +142,6 @@
 * restaurant_search{"location": "delhi"}
     - slot{"location": "delhi"}
     - action_search_restaurants
-    - slot{"location": "delhi"}
+    - slot{"restaurants":  ["Coppetto Artisan Gelato in Shop 3, Plot 117, Muzzafar Manor, Waterfield Road, Linking Road, Bandra West, delhi has been rated 4.6","Firangi Bake in Nalasopara, delhi has been rated 4.6","Theobroma in Shop 8, Ground Floor, City Park Building, Central Avenue, Hiranandani Business Park, Phase 2 Dmart, Powai, delhi has been rated 4.5","Theobroma in 24, Cusrow Baug, Shahid Bhagat Singh Road, Colaba Causeway, Colaba, delhi has been rated 4.5","Food And Taste Theory in Shop 25, 2nd Floor, Phoenix Market City, LBS Marg, Kurla, delhi has been rated 4.5"]}
 * affirm
     - utter_goodbye

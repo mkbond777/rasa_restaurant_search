@@ -1,4 +1,3 @@
-
 version: "2.0"
 stories:
 - story: interactive_story_1
@@ -6,27 +5,29 @@ stories:
   - intent: greet
   - action: utter_greet
   - intent: restaurant_search
-  - action: utter_ask_location
-  - intent: restaurant_search
-    entities:
-    - location: Mumbai
-  - slot_was_set:
-    - location: Mumbai
-  - action: utter_ask_cuisine
-  - intent: restaurant_search
     entities:
     - cuisine: Italian
+    - budget_type: high
+    - location: Mumbai
+  - slot_was_set:
+    - budget_type: high
   - slot_was_set:
     - cuisine: Italian
-  - action: utter_ask_budget
-  - intent: restaurant_search
-    entities:
-    - budget_type: medium
   - slot_was_set:
-    - budget_type: medium
+    - location: Mumbai
   - action: action_search_restaurants
   - slot_was_set:
-    - location: Mumbai
+    - restaurants:
+      - Bayroute in 1, Ground Floor, Transocean House, Lake Blve Road, Hiranandani Business Park, Powai, Mumbai has been rated 4.9
+      - Bastian in B/1, New Kamal Building, Opposite National College, Linking Road, Bandra West, Mumbai has been rated 4.8
+      - JW Café - JW Marriott Mumbai Sahar in IA Project Road, Chhatrapati Shivaji International Airport, Chakala, Mumbai has been rated 4.8
+      - Aer - Four Seasons in 1/136, E Moses Road, Worli, Mumbai has been rated 4.7
+      - The Table in Kalapesi Trust Building, Near Hotel Suba Palace, CS Maharishi Marg, Colaba, Mumbai has been rated 4.7
+      - KOKO in C 2, Trade World, Ground Floor, Kamala Mills, Near Radio Mirchi Office, SB Road, Lower Parel, Mumbai has been rated 4.7
+      - Taj Mahal Tea House in 36-A, Ground Floor, Sanatan Pereira Bungalow, St. John Baptist Road, Reclamation, Bandra West, Mumbai has been rated 4.7
+      - Wasabi By Morimoto - The Taj Mahal Palace in The Taj Mahal Palace & Tower, Apollo Bunder, Colaba, Mumbai has been rated 4.7
+      - Romano's - JW Marriott Mumbai Sahar in JW Marriott Mumbai Sahar, IA Project Road, Chhatrapati Shivaji International Airport, Sahar, Chakala, Mumbai has been rated 4.7
+      - Gallops in Mahalaxmi Race Course, Mahalaxmi, Mumbai has been rated 4.6
   - action: utter_ask_mail_send
   - intent: affirm
   - action: utter_ask_mailid
@@ -40,33 +41,4 @@ stories:
     - emailid: mkbond777@gmail.com
   - action: utter_mail_sent
   - intent: affirm
-  - action: utter_goodbye
-
-- story: interactive_story_1
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: restaurant_search
-  - action: utter_ask_location
-  - intent: restaurant_search
-    entities:
-    - location: Patna
-    - location: Patna
-  - slot_was_set:
-    - location: Patna
-  - action: utter_ask_cuisine
-  - intent: restaurant_search
-    entities:
-    - cuisine: Italian
-  - slot_was_set:
-    - cuisine: Italian
-  - action: utter_ask_budget
-  - intent: restaurant_search
-    entities:
-    - budget_type: medium
-  - slot_was_set:
-    - budget_type: medium
-  - action: action_search_restaurants
-  - action: utter_ask_mail_send
-  - intent: negate
   - action: utter_goodbye

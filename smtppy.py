@@ -11,7 +11,7 @@ class SendMail:
     def __init__(self):
         self.message = MIMEMultipart()
 
-    def send_mail(self, receiver_address, cuisine, location):
+    def send_mail(self, receiver_address, cuisine, location, restaurants):
         # Mail Body
         mail_content = """
                         Hi Manish,\n
@@ -36,8 +36,7 @@ class SendMail:
 
         # Create SMTP session for sending the mail
         try:
-            session = smtplib.SMTP('smtp.gmail.com', 587)  # use gmail with port
-            session.starttls()  # enable security
+            session = smtplib.SMTP_SSL('smtp.gmail.com', 465)  # use gmail with port
             session.login(sender_address, sender_pass)  # login with mail_id and password
             text = self.message.as_string()
             session.sendmail(sender_address, receiver_address, text)

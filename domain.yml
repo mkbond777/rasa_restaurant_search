@@ -35,6 +35,12 @@ slots:
   restaurants:
     type: list
     influence_conversation: false
+  location_found:
+    type: categorical
+    influence_conversation: true
+    values:
+    - found
+    - not_found
 responses:
   utter_ask_cuisine:
   - buttons:
@@ -63,7 +69,7 @@ responses:
   utter_default:
   - text: i cannot understand
   utter_goodbye:
-  - text: goodbye :(
+  - text: goodbye :)
   - text: Bye-bye
   utter_greet:
   - text: hey there! How may i help you
@@ -78,6 +84,9 @@ responses:
   utter_mail_sent:
   - text: I have sent you mail with all the deatils.
   - text: Mail has been sent.
+  utter_location_notfound:
+  - text: Sorry we only operate in tier 1 and tier 2 cities. Please provide only tier 1 and tier 2 cities name.
+  - text: Sorry we are only operation in tier 1 and tier 2 cities. Please provide location again.
 actions:
 - action_search_restaurants
 - action_send_mail
@@ -91,4 +100,6 @@ actions:
 - utter_goodbye
 - utter_greet
 - utter_mail_sent
+- action_check_location
+- utter_location_notfound
 version: '2.0'

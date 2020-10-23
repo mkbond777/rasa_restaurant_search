@@ -44,18 +44,19 @@ class ActionSearchRestaurants(Action):
         return [SlotSet('restaurants', response[:10])]
 
 
-# class CheckLocation(Action):
-# 	def name(self):
-# 		return 'action_check_location'
+class CheckLocation(Action):
+    def name(self):
+        return 'action_check_location'
 
-# 	def run(self, dispatcher, tracker, domain):
+    def run(self, dispatcher, tracker, domain):
+        cities = ["agra","ajmer","aligarh","amravati","amritsar","asansol","aurangabad","bareilly","belgaum","bhavnagar","bhiwandi","bhopal","bhubaneswar","bikaner","bilaspur","bokarosteelcity","chandigarh","coimbatore","cuttack","dehradun","dhanbad","bhilai","durgapur","dindigul","erode","faridabad","firozabad","ghaziabad","gorakhpur","gulbarga","guntur","gwalior","gurgaon","guwahati","hamirpur","hubli–dharwad","indore","jabalpur","jaipur","jalandhar","jammu","jamnagar","jamshedpur","jhansi","jodhpur","kakinada","kannur","kanpur","karnal","kochi","kolhapur","kollam","kozhikode","kurnool","ludhiana","lucknow","madurai","malappuram","mathura","mangalore","meerut","moradabad","mysore","nagpur","nanded","nashik","nellore","noida","patna","pondicherry","purulia","prayagraj","raipur","rajkot","rajahmundry","ranchi","rourkela","salem","sangli","shimla","siliguri","solapur","srinagar","surat","thanjavur","thiruvananthapuram","thrissur","tiruchirappalli","tirunelveli","ujjain","bijapur","vadodara","varanasi","vasai-virarcity","vijayawada","visakhapatnam","vellore","warangal","ahmedabad","bengaluru","chennai","delhi","hyderabad","kolkata","mumbai","pune"]
+        loc = tracker.get_slot('location')
+        if loc.lower() in cities:
+            #dispatcher.utter_message("We only operate in tier 1 and tier 2 cities. Please provide location again")
+            return [SlotSet('location', loc),SlotSet('location_found', "found")]
+        else:
+            return [SlotSet('location', None),SlotSet('location_found', "not_found")]
 
-# 		loc = tracker.get_slot('location')
-# 		if valid_location(loc):
-# 			SlotSet('check_op',True)
-# 		else:
-# 			SlotSet('check_op',False)
-# 		return [SlotSet('location',loc)]
 
 class SendMail(Action):
     def name(self):
@@ -76,7 +77,6 @@ class SendMail(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-
         loc = tracker.get_slot('location')
         cuisine = tracker.get_slot('cuisine')
         restaurants = tracker.get_slot('restaurants')

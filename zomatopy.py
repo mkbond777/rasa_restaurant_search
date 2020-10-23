@@ -301,6 +301,7 @@ class Zomato:
 
     def get_restaurants(self,lat,lon,cuisine,budget):
         response=[]
+        avg_budget_two_people = []
         count = 0
         for offset in range(0,100,20):
             if count >= 5:
@@ -309,6 +310,7 @@ class Zomato:
             d = json.loads(results)
             if d['results_found'] == 0:
                 response.append("no results")
+                avg_budget_two_people.append("no results")
                 break
             else:
                 if budget == 'low':
@@ -316,18 +318,21 @@ class Zomato:
                         if restaurant['restaurant']['average_cost_for_two'] <= 300:
                             count += 1
                             response.append(restaurant['restaurant']['name']+ " in "+ restaurant['restaurant']['location']['address'] + " has been rated " + restaurant['restaurant']['user_rating']['aggregate_rating'])
+                            avg_budget_two_people.append(restaurant['restaurant']['average_cost_for_two'])
                 elif budget == 'medium':
                     for restaurant in d['restaurants']:
                         if restaurant['restaurant']['average_cost_for_two'] > 300 and restaurant['restaurant']['average_cost_for_two'] <= 700:
                             count += 1
                             response.append(restaurant['restaurant']['name']+ " in "+ restaurant['restaurant']['location']['address'] + " has been rated " + restaurant['restaurant']['user_rating']['aggregate_rating'])
+                            avg_budget_two_people.append(restaurant['restaurant']['average_cost_for_two'])
                 elif budget == 'high':
                     for restaurant in d['restaurants']:
                         if restaurant['restaurant']['average_cost_for_two'] > 700:
                             count += 1
                             response.append(restaurant['restaurant']['name']+ " in "+ restaurant['restaurant']['location']['address'] + " has been rated " + restaurant['restaurant']['user_rating']['aggregate_rating'])
+                            avg_budget_two_people.append(restaurant['restaurant']['average_cost_for_two'])
 
-        return response
+        return response, avg_budget_two_people
 
 
 

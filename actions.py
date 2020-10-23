@@ -32,16 +32,19 @@ class ActionSearchRestaurants(Action):
                          'south indian': 85}
         cuisine_code = str(cuisines_dict.get(cuisine.lower()))
 
-        response = zomato.get_restaurants(lat, lon, cuisine_code, budget)
+        response,avg_cost = zomato.get_restaurants(lat, lon, cuisine_code, budget)
 
         if "no results" in response:
             response.remove("no results")
+            avg_cost.remove("no results")
         if not response:
             dispatcher.utter_message("-----" + "no results")
+            return [SlotSet('restaurants', None)]
         else:
             for i in response[:5]:
                 dispatcher.utter_message("-----" + i)
-        return [SlotSet('restaurants', response[:10])]
+            mail_response = [r + " which has average cost for two people as " + str(a) for r,a in zip(response,avg_cost)]
+            return [SlotSet('restaurants', mail_response[:10])]
 
 
 class CheckLocation(Action):

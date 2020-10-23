@@ -28,7 +28,7 @@ class ActionSearchRestaurants(Action):
         d1 = json.loads(location_detail)
         lat = d1["location_suggestions"][0]["latitude"]
         lon = d1["location_suggestions"][0]["longitude"]
-        cuisines_dict = {'bakery': 5, 'chinese': 25, 'cafe': 30, 'italian': 55, 'biryani': 7, 'north indian': 50,
+        cuisines_dict = {'mexican': 73, 'chinese': 25, 'cafe': 30, 'italian': 55, 'american': 1, 'north indian': 50,
                          'south indian': 85}
         cuisine_code = str(cuisines_dict.get(cuisine.lower()))
 
@@ -52,7 +52,6 @@ class CheckLocation(Action):
         cities = ["agra","ajmer","aligarh","amravati","amritsar","asansol","aurangabad","bareilly","belgaum","bhavnagar","bhiwandi","bhopal","bhubaneswar","bikaner","bilaspur","bokarosteelcity","chandigarh","coimbatore","cuttack","dehradun","dhanbad","bhilai","durgapur","dindigul","erode","faridabad","firozabad","ghaziabad","gorakhpur","gulbarga","guntur","gwalior","gurgaon","guwahati","hamirpur","hubli–dharwad","indore","jabalpur","jaipur","jalandhar","jammu","jamnagar","jamshedpur","jhansi","jodhpur","kakinada","kannur","kanpur","karnal","kochi","kolhapur","kollam","kozhikode","kurnool","ludhiana","lucknow","madurai","malappuram","mathura","mangalore","meerut","moradabad","mysore","nagpur","nanded","nashik","nellore","noida","patna","pondicherry","purulia","prayagraj","raipur","rajkot","rajahmundry","ranchi","rourkela","salem","sangli","shimla","siliguri","solapur","srinagar","surat","thanjavur","thiruvananthapuram","thrissur","tiruchirappalli","tirunelveli","ujjain","bijapur","vadodara","varanasi","vasai-virarcity","vijayawada","visakhapatnam","vellore","warangal","ahmedabad","bengaluru","chennai","delhi","hyderabad","kolkata","mumbai","pune"]
         loc = tracker.get_slot('location')
         if loc.lower() in cities:
-            #dispatcher.utter_message("We only operate in tier 1 and tier 2 cities. Please provide location again")
             return [SlotSet('location', loc),SlotSet('location_found', "found")]
         else:
             return [SlotSet('location', None),SlotSet('location_found', "not_found")]
@@ -62,18 +61,6 @@ class SendMail(Action):
     def name(self):
         return 'action_send_mail'
 
-    # def run(self, dispatcher: CollectingDispatcher,
-    #         tracker: Tracker,
-    #         domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-    #     loc = tracker.get_slot('location')
-    #     cuisine = tracker.get_slot('cuisine')
-    #     sender_id = tracker.get_slot('emailid')
-    #     restaurants = tracker.get_slot('restaurants')
-    #     send_m = smtppy.initialize_app()
-    #     response = send_m.send_mail(sender_id, cuisine, loc, restaurants)
-    #     dispatcher.utter_message("-----" + response)
-    #     return [SlotSet('emailid', sender_id)]
-
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
@@ -82,25 +69,28 @@ class SendMail(Action):
         restaurants = tracker.get_slot('restaurants')
         recipient = tracker.get_slot('emailid')
 
-        res_str = "\n\n".join(restaurants)
+        # res_str = "\n\n".join(restaurants)
+        #
+        # subject = "Testing mail"
+        # body = "Hi,\n\n\tBelow is the list of top 10 restaurants in " + loc + " for " + cuisine + " foods.\n\n\n" + \
+        #        res_str
+        #
+        # server = smtplib.SMTP_SSL('smtp.gmail.com', 465)  # connect to smtp server
+        # server.login("upgrad.rasa.chat@gmail.com", "manish@1992")
+        # # you can write your mail and or get it from the slots with tracker.get_slot
+        # # if you are using your email is better that you dont pass it through the code for security u can
+        # # set path variables with email and password and use them instead
+        #
+        # msg = "Subject: {} \n\n {} ".format(subject, body)  # creating the message
+        #
+        # server.sendmail(  # send the email
+        #     "upgrad.rasa.chat@gmail.com",
+        #     recipient,
+        #     msg.encode('utf-8'))
+        # server.quit()
 
-        subject = "Testing mail"
-        body = "Hi,\n\n\tBelow is the list of top 10 restaurants in " + loc + " for " + cuisine + " foods.\n\n\n" + \
-               res_str
+        smtp_obj = smtppy.initialize_app()
+        response = smtp_obj.send_mail(recipient,cuisine,loc,restaurants)
 
-        server = smtplib.SMTP_SSL('smtp.gmail.com', 465)  # connect to smtp server
-        server.login("upgrad.rasa.chat@gmail.com", "manish@1992")
-        # you can write your mail and or get it from the slots with tracker.get_slot
-        # if you are using your email is better that you dont pass it through the code for security u can
-        # set path variables with email and password and use them instead
-
-        msg = "Subject: {} \n\n {} ".format(subject, body)  # creating the message
-
-        server.sendmail(  # send the email
-            "upgrad.rasa.chat@gmail.com",
-            recipient,
-            msg.encode('utf-8'))
-        server.quit()
-
-        dispatcher.utter_message(" Email sended ! ")
+        dispatcher.utter_message("----------------"+response)
         return [SlotSet("emailid", recipient)]  # just in my case, u can return ntg

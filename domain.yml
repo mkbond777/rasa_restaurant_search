@@ -52,6 +52,10 @@ responses:
       title: South Indian
     - payload: North Indian
       title: North Indian
+    - payload: Mexican
+      title: Mexican
+    - payload: American
+      title: American
     text: what kind of cuisine would you like?
   utter_ask_budget:
   - buttons:
@@ -81,9 +85,6 @@ responses:
   utter_ask_mail_send:
   - text: Do you want me to send these information over mail?
   - text: Should I send these information over mail?
-  utter_mail_sent:
-  - text: I have sent you mail with all the deatils.
-  - text: Mail has been sent.
   utter_location_notfound:
   - text: Sorry we only operate in tier 1 and tier 2 cities. Please provide only tier 1 and tier 2 cities name.
   - text: Sorry we are only operation in tier 1 and tier 2 cities. Please provide location again.
@@ -99,7 +100,6 @@ actions:
 - utter_default
 - utter_goodbye
 - utter_greet
-- utter_mail_sent
 - action_check_location
 - utter_location_notfound
 version: '2.0'

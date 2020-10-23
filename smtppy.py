@@ -8,39 +8,26 @@ def initialize_app():
 
 
 class SendMail:
-    def __init__(self):
-        self.message = MIMEMultipart()
 
-    def send_mail(self, receiver_address, cuisine, location, restaurants):
+    def send_mail(self, recipient, cuisine, loc, restaurants):
         # Mail Body
-        mail_content = """
-                        Hi Manish,\n
-                            Below is the list of restaurants in """ + location + " for " + cuisine + " foods." + """
-    
-                            1. Coffee
-                            2. Tea 
-                            3. Milk
-                        """
+        res_str = "\n\n".join(restaurants)
 
-        # The mail addresses and password
-        sender_address = 'upgrad.rasa.chat@gmail.com'
-        sender_pass = 'manish@1992'
+        subject = "Your preferred restaurants list"
+        body = "Hi,\n\nBelow is the list of top 10 restaurants in " + loc + " for " + cuisine + " foods.\n\n\n" + \
+               res_str
 
-        # Setup the MIME
-        self.message['From'] = sender_address
-        self.message['To'] = receiver_address
-        self.message['Subject'] = 'A test mail sent by Python. It has an attachment.'  # The subject line
+        server = smtplib.SMTP_SSL('smtp.gmail.com', 465)  # connect to smtp server
+        server.login("upgrad.rasa.chat@gmail.com", "manish@1992")
 
-        # The body and the attachments for the mail
-        self.message.attach(MIMEText(mail_content, 'plain'))
+        msg = "Subject: {} \n\n {} ".format(subject, body)  # creating the message
 
-        # Create SMTP session for sending the mail
         try:
-            session = smtplib.SMTP_SSL('smtp.gmail.com', 465)  # use gmail with port
-            session.login(sender_address, sender_pass)  # login with mail_id and password
-            text = self.message.as_string()
-            session.sendmail(sender_address, receiver_address, text)
-            session.quit()
-            return "mail sent"
+            server.sendmail(  # send the email
+                "upgrad.rasa.chat@gmail.com",
+                recipient,
+                msg.encode('utf-8'))
+            server.quit()
+            return "Mail Sent"
         except Exception as e:
             return str(e)

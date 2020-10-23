@@ -26,7 +26,6 @@
     - slot{"emailid": "abc@yahoo.com"}
     - action_send_mail
     - slot{"emailid": "abc@yahoo.com"}
-    - utter_mail_sent
 * affirm
     - utter_goodbye
 
@@ -56,7 +55,6 @@
     - slot{"emailid": "abc@yahoo.com"}
     - action_send_mail
     - slot{"emailid": "abc@yahoo.com"}
-    - utter_mail_sent
 * affirm
     - utter_goodbye
     - export
@@ -108,7 +106,6 @@
     - slot{"emailid": "abc@yahoo.com"}
     - action_send_mail
     - slot{"emailid": "abc@yahoo.com"}
-    - utter_mail_sent
 * goodbye
     - utter_goodbye
 
@@ -131,6 +128,5 @@
     - slot{"emailid": "abc@yahoo.com"}
     - action_send_mail
     - slot{"emailid": "abc@yahoo.com"}
-    - utter_mail_sent
 * affirm
     - utter_goodbye

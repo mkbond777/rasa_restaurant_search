@@ -39,6 +39,5 @@ stories:
   - action: action_send_mail
   - slot_was_set:
     - emailid: mkbond777@gmail.com
-  - action: utter_mail_sent
   - intent: affirm
   - action: utter_goodbye

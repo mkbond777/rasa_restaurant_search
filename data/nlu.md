@@ -95,6 +95,7 @@
 - please show me a few [italian](cuisine) restaurants in [Bengaluru](location)
 - show me restaurants in [Dilli](location:Delhi)
 - [Bangalore](location:Bengaluru)
+- [low](budget_type:low)
 
 
 ## synonym:Bengaluru

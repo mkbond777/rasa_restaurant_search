@@ -184,3 +184,51 @@ stories:
     - emailid: mkbond777@gmail.com
   - intent: affirm
   - action: utter_goodbye
+
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: restaurant_search
+    entities:
+    - location: kolkata
+  - slot_was_set:
+    - location: kolkata
+  - action: action_check_location
+  - slot_was_set:
+    - location: kolkata
+  - slot_was_set:
+    - location_found: found
+  - action: utter_ask_cuisine
+  - intent: restaurant_search
+    entities:
+    - cuisine: American
+  - slot_was_set:
+    - cuisine: American
+  - action: utter_ask_budget
+  - intent: restaurant_search
+    entities:
+    - budget_type: low
+  - slot_was_set:
+    - budget_type: low
+  - action: action_search_restaurants
+  - slot_was_set:
+    - restaurants:
+      - Solid Gulp (Bapi Dar Momo) in Karunamoyee Bus Stop, Sector 2, Salt Lake has been rated 4.9 which has average cost for two people as 200
+      - Wok This Way in 5, Sarat Chatterjee Avenue, Menoka Cinema, Southern Avenue, Kolkata has been rated 4.5 which has average cost for two people as 300
+      - Mangalam Snacks in 217, Lokenath Park, Chinar Park, Kolkata has been rated 4.3 which has average cost for two people as 200
+      - Chetty's Corner in 41, Justice Chandramahadeb Road, Sreepally, Bhowanipore, Kolkata has been rated 4.2 which has average cost for two people as 250
+  - action: utter_ask_mail_send
+  - intent: affirm
+  - action: utter_ask_mailid
+  - intent: mailid
+    entities:
+    - emailid: mkbond777@gmail.com
+  - slot_was_set:
+    - emailid: mkbond777@gmail.com
+  - action: action_send_mail
+  - slot_was_set:
+    - emailid: mkbond777@gmail.com
+  - intent: affirm
+  - action: utter_goodbye

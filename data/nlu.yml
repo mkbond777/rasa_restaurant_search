@@ -19,8 +19,13 @@ nlu:
     - I’m hungry. Looking out for some good restaurants
     - [bengaluru](location)
     - [Thai](cuisine)
-    - show me some restaurants in [Allahabad](location)[Allahabad](location) for [chines]{"entity": "cuisine", "value": "chinese"} foods
-    - [high](budget_type)
+    - show me some restaurants in [Allahabad](location) for [chines]{"entity": "cuisine", "value": "chinese"} foods
+    - Can you suggest some good restaurants in [kolkata](location)
+    - [American](cuisine)
+    - [low](budget_type)
+    - Can you suggest some good restaurants in [kolkata](location)
+    - [American](cuisine)
+    - [low](budget_type)
 - intent: affirm
   examples: |
     - yes
@@ -36,3 +41,4 @@ nlu:
 - synonym: chinese
   examples: |
     - Chinese
+    - chines

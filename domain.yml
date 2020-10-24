@@ -2,11 +2,11 @@ session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
+- restaurant_search
+- negate
 - greet
 - affirm
 - mailid
-- restaurant_search
-- negate
 - goodbye
 - stop
 entities:
@@ -32,15 +32,16 @@ slots:
   location:
     type: text
     influence_conversation: true
-  restaurants:
-    type: list
-    influence_conversation: false
   location_found:
     type: categorical
     influence_conversation: true
     values:
     - found
     - not_found
+    - __other__
+  restaurants:
+    type: list
+    influence_conversation: false
 responses:
   utter_ask_cuisine:
   - buttons:
@@ -89,6 +90,7 @@ responses:
   - text: Sorry we only operate in tier 1 and tier 2 cities. Please provide only tier 1 and tier 2 cities name.
   - text: Sorry we are only operation in tier 1 and tier 2 cities. Please provide location again.
 actions:
+- action_check_location
 - action_search_restaurants
 - action_send_mail
 - utter_ask_budget
@@ -100,6 +102,5 @@ actions:
 - utter_default
 - utter_goodbye
 - utter_greet
-- action_check_location
 - utter_location_notfound
 version: '2.0'

@@ -41,3 +41,46 @@ stories:
     - emailid: mkbond777@gmail.com
   - intent: affirm
   - action: utter_goodbye
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: restaurant_search
+    entities:
+    - location: Delhi
+  - slot_was_set:
+    - location: Delhi
+  - action: action_check_location
+  - slot_was_set:
+    - location: Delhi
+  - slot_was_set:
+    - location_found: found
+  - action: utter_ask_cuisine
+  - intent: restaurant_search
+    entities:
+    - cuisine: Italian
+  - slot_was_set:
+    - cuisine: Italian
+  - action: utter_ask_budget
+  - intent: restaurant_search
+    entities:
+    - budget_type: high
+  - slot_was_set:
+    - budget_type: high
+  - action: action_search_restaurants
+  - slot_was_set:
+    - restaurants:
+      - Indian Accent in The Lodhi, Lodhi Road, New Delhi has been rated 4.9 which has average cost for two people as 5000
+      - Pa Pa Ya in A-3, Select Citywalk, District Centre, Saket, New Delhi has been rated 4.9 which has average cost for two people as 2500
+      - The Big Chill in 68-A, Khan Market, New Delhi has been rated 4.9 which has average cost for two people as 1500
+      - The Big Chill in 35, Khan Market, New Delhi has been rated 4.9 which has average cost for two people as 1500
+      - Manhattan Bar & Brewery in 1st Floor, Global Foyer Mall, Sector 43, Golf Course Road, Gurgaon has been rated 4.8 which has average cost for two people as 1400
+      - The Big Chill Cafe in First Floor, B 40, The Colonnade, Opposite Gate 2 Rajiv Chowk Metro Station, Connaught Place, New Delhi has been rated 4.8 which has average cost for two people as 1500
+      - Cocktails & Dreams, Speakeasy in SCO 23, Sector 15, Gurgaon has been rated 4.8 which has average cost for two people as 2500
+      - The Big Chill in 170B - 170C, DLF Avenue, Saket, New Delhi has been rated 4.8 which has average cost for two people as 1500
+      - The Big Chill in HS 5, Kailash Colony Market, Kailash Colony, New Delhi has been rated 4.8 which has average cost for two people as 1500
+      - The Big Chill in 3rd Floor, DLF Promenade Mall, Vasant Kunj, New Delhi has been rated 4.8 which has average cost for two people as 1500
+  - action: utter_ask_mail_send
+  - intent: negate
+  - action: utter_goodbye

@@ -29,7 +29,7 @@ class ActionSearchRestaurants(Action):
         lat = d1["location_suggestions"][0]["latitude"]
         lon = d1["location_suggestions"][0]["longitude"]
         cuisines_dict = {'mexican': 73, 'chinese': 25, 'cafe': 30, 'italian': 55, 'american': 1, 'north indian': 50,
-                         'south indian': 85}
+                         'south indian': 85,'thai':95}
         cuisine_code = str(cuisines_dict.get(cuisine.lower()))
 
         response,avg_cost = zomato.get_restaurants(lat, lon, cuisine_code, budget)
@@ -39,10 +39,12 @@ class ActionSearchRestaurants(Action):
             avg_cost.remove("no results")
         if not response:
             dispatcher.utter_message("-----" + "no results")
+            dispatcher.utter_message("\n")
             return [SlotSet('restaurants', None)]
         else:
             for i in response[:5]:
                 dispatcher.utter_message("-----" + i)
+            dispatcher.utter_message("\n")
             mail_response = [r + " which has average cost for two people as " + str(a) for r,a in zip(response,avg_cost)]
             return [SlotSet('restaurants', mail_response[:10])]
 
@@ -52,7 +54,8 @@ class CheckLocation(Action):
         return 'action_check_location'
 
     def run(self, dispatcher, tracker, domain):
-        cities = ["agra","ajmer","aligarh","amravati","amritsar","asansol","aurangabad","bareilly","belgaum","bhavnagar","bhiwandi","bhopal","bhubaneswar","bikaner","bilaspur","bokarosteelcity","chandigarh","coimbatore","cuttack","dehradun","dhanbad","bhilai","durgapur","dindigul","erode","faridabad","firozabad","ghaziabad","gorakhpur","gulbarga","guntur","gwalior","gurgaon","guwahati","hamirpur","hubli–dharwad","indore","jabalpur","jaipur","jalandhar","jammu","jamnagar","jamshedpur","jhansi","jodhpur","kakinada","kannur","kanpur","karnal","kochi","kolhapur","kollam","kozhikode","kurnool","ludhiana","lucknow","madurai","malappuram","mathura","mangalore","meerut","moradabad","mysore","nagpur","nanded","nashik","nellore","noida","patna","pondicherry","purulia","prayagraj","raipur","rajkot","rajahmundry","ranchi","rourkela","salem","sangli","shimla","siliguri","solapur","srinagar","surat","thanjavur","thiruvananthapuram","thrissur","tiruchirappalli","tirunelveli","ujjain","bijapur","vadodara","varanasi","vasai-virarcity","vijayawada","visakhapatnam","vellore","warangal","ahmedabad","bengaluru","chennai","delhi","hyderabad","kolkata","mumbai","pune"]
+        cities = ["agra","ajmer","aligarh","amravati","amritsar","asansol","aurangabad","bareilly","belgaum",
+                  "bhavnagar","bhiwandi","bhopal","bhubaneswar","bikaner","bilaspur","bokarosteelcity","chandigarh","coimbatore","cuttack","dehradun","dhanbad","bhilai","durgapur","dindigul","erode","faridabad","firozabad","ghaziabad","gorakhpur","gulbarga","guntur","gwalior","gurgaon","guwahati","hamirpur","hubli–dharwad","indore","jabalpur","jaipur","jalandhar","jammu","jamnagar","jamshedpur","jhansi","jodhpur","kakinada","kannur","kanpur","karnal","kochi","kolhapur","kollam","kozhikode","kurnool","ludhiana","lucknow","madurai","malappuram","mathura","mangalore","meerut","moradabad","mysore","nagpur","nanded","nashik","nellore","noida","patna","pondicherry","purulia","allahabad","raipur","rajkot","rajahmundry","ranchi","rourkela","salem","sangli","shimla","siliguri","solapur","srinagar","surat","thanjavur","thiruvananthapuram","thrissur","tiruchirappalli","tirunelveli","ujjain","bijapur","vadodara","varanasi","vasai-virarcity","vijayawada","visakhapatnam","vellore","warangal","ahmedabad","bengaluru","chennai","delhi","hyderabad","kolkata","mumbai","pune"]
         loc = tracker.get_slot('location')
         if loc.lower() in cities:
             return [SlotSet('location', loc),SlotSet('location_found', "found")]

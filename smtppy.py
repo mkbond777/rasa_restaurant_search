@@ -14,7 +14,7 @@ class SendMail:
         res_str = "\n\n".join(restaurants)
 
         subject = "Your preferred restaurants list"
-        body = "Hi,\n\nBelow is the list of top restaurants in " + loc + " for " + cuisine + "foods in your " \
+        body = "Hi,\n\nBelow is the list of top restaurants in " + loc + " for " + cuisine + " foods in your " \
                                                                                              "budget\n\n\n" + res_str
 
         server = smtplib.SMTP_SSL('smtp.gmail.com', 465)  # connect to smtp server

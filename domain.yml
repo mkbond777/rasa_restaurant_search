@@ -2,11 +2,11 @@ session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
 intents:
-- restaurant_search
 - negate
+- restaurant_search
 - greet
-- affirm
 - mailid
+- affirm
 - goodbye
 - stop
 entities:
@@ -57,6 +57,8 @@ responses:
       title: Mexican
     - payload: American
       title: American
+    - payload: Thai
+      title: Thai
     text: what kind of cuisine would you like?
   utter_ask_budget:
   - buttons:

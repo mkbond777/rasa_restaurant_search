@@ -29,11 +29,9 @@
 - hey there
 - hello
 - hi
+- hola
 - good morning
-- good evening
 - dear sir
-- hi
-- hi
 - hello
 
 ## intent:negate
@@ -54,7 +52,7 @@
 - I want to grab lunch
 - I am searching for a dinner spot
 - I am looking for some restaurants in [Delhi](location).
-- I am looking for some restaurants in [Bangalore](location)
+- I am looking for some restaurants in [Bangalore](location:Bengaluru)
 - show me [chinese](cuisine) restaurants
 - show me [chines](cuisine:chinese) restaurants in the [New Delhi](location:Delhi)
 - show me a [mexican](cuisine) place in the [centre](location)
@@ -77,7 +75,7 @@
 <!-- - can you book a table in [rome](location) in a [moderate](price:mid) price range with [british](cuisine) food for [four](people:4) people -->
 - [central](location) [indian](cuisine) restaurant
 - please help me to find restaurants in [pune](location)
-- Please find me a restaurantin [bangalore](location)
+- Please find me a restaurantin [Bengaluru](location)
 - [mumbai](location)
 - [Chinese](cuisine:chinese)
 - show me restaurants
@@ -94,12 +92,13 @@
 - can you find me a [chinese](cuisine) restaurant
 - [delhi](location)
 - please find me a restaurant in [ahmedabad](location)
-- please show me a few [italian](cuisine) restaurants in [bangalore](location)
+- please show me a few [italian](cuisine) restaurants in [Bengaluru](location)
 - show me restaurants in [Dilli](location:Delhi)
+- [Bangalore](location:Bengaluru)
 
 
-## synonym:Bangalore
-- Bengaluru
+## synonym:Bengaluru
+- Bangalore
 - Banglore
 
 ## synonym:Chennai
@@ -108,6 +107,9 @@
 ## synonym:Mumbai
 - Bombay
 - Bambai
+
+## synonym:Allahabad
+- Prayagraj
 
 ## synonym:chinese
 - chines
@@ -189,7 +191,7 @@
 - Patna
 - Pondicherry
 - Purulia
-- Prayagraj
+- Allahabad
 - Raipur
 - Rajkot
 - Rajahmundry

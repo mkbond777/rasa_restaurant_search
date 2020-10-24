@@ -3,6 +3,8 @@ nlu:
 - intent: greet
   examples: |
     - Hi
+    - Hola
+    - Hey
 - intent: restaurant_search
   examples: |
     - show me some restaurants
@@ -13,12 +15,15 @@ nlu:
     - [Patna](location)
     - Show me some [Italian](cuisine) [high](budget_type) budget restaurant in [Mumbai](location)
     - show me some restaurants in [Delhi](location)
-    - [Italian](cuisine)
     - [high](budget_type)
+    - I’m hungry. Looking out for some good restaurants
+    - [bengaluru](location)
+    - [Thai](cuisine)
 - intent: affirm
   examples: |
     - yes
     - thanks
+    - Thanks
 - intent: mailid
   examples: |
     - [mkbond777@gmail.com](emailid)

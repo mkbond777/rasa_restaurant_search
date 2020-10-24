@@ -71,6 +71,7 @@ responses:
   - text: how can I help you?
   utter_ask_location:
   - text: In what location?
+  - text: In which city are you looking for restaurants?
   utter_default:
   - text: i cannot understand
   utter_goodbye:

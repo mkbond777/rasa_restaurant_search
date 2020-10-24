@@ -98,13 +98,16 @@
 - show me restaurants in [Dilli](location:Delhi)
 
 
-## synonym:Delhi
-- dilli
-- New Delhi
-
-## synonym:bangalore
+## synonym:Bangalore
 - Bengaluru
 - Banglore
+
+## synonym:Chennai
+- Madras
+
+## synonym:Mumbai
+- Bombay
+- Bambai
 
 ## synonym:chinese
 - chines

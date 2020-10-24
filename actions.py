@@ -72,26 +72,6 @@ class SendMail(Action):
         restaurants = tracker.get_slot('restaurants')
         recipient = tracker.get_slot('emailid')
 
-        # res_str = "\n\n".join(restaurants)
-        #
-        # subject = "Testing mail"
-        # body = "Hi,\n\n\tBelow is the list of top 10 restaurants in " + loc + " for " + cuisine + " foods.\n\n\n" + \
-        #        res_str
-        #
-        # server = smtplib.SMTP_SSL('smtp.gmail.com', 465)  # connect to smtp server
-        # server.login("upgrad.rasa.chat@gmail.com", "manish@1992")
-        # # you can write your mail and or get it from the slots with tracker.get_slot
-        # # if you are using your email is better that you dont pass it through the code for security u can
-        # # set path variables with email and password and use them instead
-        #
-        # msg = "Subject: {} \n\n {} ".format(subject, body)  # creating the message
-        #
-        # server.sendmail(  # send the email
-        #     "upgrad.rasa.chat@gmail.com",
-        #     recipient,
-        #     msg.encode('utf-8'))
-        # server.quit()
-
         smtp_obj = smtppy.initialize_app()
         response = smtp_obj.send_mail(recipient,cuisine,loc,restaurants)
 

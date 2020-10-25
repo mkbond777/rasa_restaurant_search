@@ -23,6 +23,9 @@ nlu:
     - Can you suggest some good restaurants in [kolkata](location)
     - [American](cuisine)
     - [low](budget_type)
+    - I am hungary
+    - [Bangalore]{"entity": "location", "value": "Bengaluru"}
+    - [North Indian](cuisine)
     - Can you suggest some good restaurants in [kolkata](location)
     - [American](cuisine)
     - [low](budget_type)
@@ -31,10 +34,11 @@ nlu:
     - yes
     - thanks
     - Thanks
+    - yes. Please
 - intent: mailid
   examples: |
     - [mkbond777@gmail.com](emailid)
-    - [mkbond777@gmail.com](emailid)
+    - [mkbond777@outlook.com](emailid)
 - intent: negate
   examples: |
     - no
@@ -42,3 +46,6 @@ nlu:
   examples: |
     - Chinese
     - chines
+- synonym: Bengaluru
+  examples: |
+    - Bangalore

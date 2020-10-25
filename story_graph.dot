@@ -16,8 +16,8 @@ digraph  {
 13 [class="intent active", fillcolor=lightblue, label="Can you suggest some good restaurants in kolkata", shape=rect, style=filled];
 14 [class="intent active", fillcolor=lightblue, label=American, shape=rect, style=filled];
 15 [class="intent active", fillcolor=lightblue, label=low, shape=rect, style=filled];
-16 [class="intent active", fillcolor=lightblue, label=yes, shape=rect, style=filled];
-17 [class="intent active", fillcolor=lightblue, label="mkbond777@gmail.com", shape=rect, style=filled];
+16 [class="intent active", fillcolor=lightblue, label="yes. Please", shape=rect, style=filled];
+17 [class="intent active", fillcolor=lightblue, label="mkbond777@outlook.com", shape=rect, style=filled];
 18 [class="intent active", fillcolor=lightblue, label=Thanks, shape=rect, style=filled];
 0 -> "-1"  [class="", key=NONE, label=""];
 0 -> 1  [class=active, key=NONE, label=""];

@@ -306,6 +306,7 @@ class Zomato:
         for offset in range(0,100,20):
             if count >= 5:
                 break
+            print("restaurant search api parameters",lat,lon,cuisine,offset)
             results = self.restaurant_search("", lat, lon, cuisine, offset)
             d = json.loads(results)
             if d['results_found'] == 0:

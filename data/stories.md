@@ -64,19 +64,26 @@
     - utter_greet
 * restaurant_search
     - utter_ask_location
-* restaurant_search{"location": "delhi"}
-    - slot{"location": "delhi"}
+* restaurant_search{"location": "kolkata"}
+    - slot{"location": "kolkata"}
     - action_check_location
-    - slot{"location":"delhi"}
+    - slot{"location":"kolkata"}
     - slot{"location_found":"found"}
     - utter_ask_cuisine
-* restaurant_search{"cuisine": "North Indian"}
-    - slot{"cuisine": "North Indian"}
+* restaurant_search{"cuisine": "American"}
+    - slot{"cuisine": "American"}
     - utter_ask_budget
 * restaurant_search{"budget_type": "low"}
     - slot{"budget_type": "low"}
     - action_search_restaurants
     - slot{"restaurants": null}
+    - utter_ask_mail_send
+* affirm
+    - utter_ask_mailid
+* mailid{"emailid":"abc@yahoo.com"}
+    - slot{"emailid": "abc@yahoo.com"}
+    - action_send_mail
+    - slot{"emailid": "abc@yahoo.com"}
 * affirm
     - utter_goodbye
     - export
@@ -98,6 +105,7 @@
 * restaurant_search{"budget_type": "medium"}
     - slot{"budget_type": "medium"}
     - action_search_restaurants
+    - slot{"restaurants": ["Coppetto Artisan Gelato in Shop 3, Plot 117, Muzzafar Manor, Waterfield Road, Linking Road, Bandra West, Patna has been rated 4.6","Firangi Bake in Nalasopara, Patna has been rated 4.6","Theobroma in Shop 8, Ground Floor, City Park Building, Central Avenue, Hiranandani Business Park, Phase 2 Dmart, Powai, Patna has been rated 4.5","Theobroma in 24, Cusrow Baug, Shahid Bhagat Singh Road, Colaba Causeway, Colaba, Patna has been rated 4.5","Food And Taste Theory in Shop 25, 2nd Floor, Phoenix Market City, LBS Marg, Kurla, Patna has been rated 4.5"]}
     - utter_ask_mail_send
 * affirm
     - utter_ask_mailid

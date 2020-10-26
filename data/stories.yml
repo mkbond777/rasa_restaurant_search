@@ -279,3 +279,64 @@ stories:
     - emailid: mkbond777@gmail.com
   - intent: affirm
   - action: utter_goodbye
+
+- story: interactive_story_1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: restaurant_search
+    entities:
+    - location: Rishikesh
+  - slot_was_set:
+    - location: Rishikesh
+  - action: action_check_location
+  - slot_was_set:
+    - location: null
+  - slot_was_set:
+    - location_found: not_found
+  - action: utter_location_notfound
+  - intent: restaurant_search
+    entities:
+    - location: Allahabad
+  - slot_was_set:
+    - location: Allahabad
+  - action: action_check_location
+  - slot_was_set:
+    - location: Allahabad
+  - slot_was_set:
+    - location_found: found
+  - action: utter_ask_cuisine
+  - intent: restaurant_search
+    entities:
+    - cuisine: chinese
+  - slot_was_set:
+    - cuisine: chinese
+  - action: utter_ask_budget
+  - intent: restaurant_search
+    entities:
+    - budget_type: high
+  - slot_was_set:
+    - budget_type: high
+  - action: action_search_restaurants
+  - slot_was_set:
+    - restaurants:
+      - EDEN by Connoisseur in Hotel Samrat, Civil Lines, Allahabad has been rated 4.6 which has average cost for two people as 1000
+      - El Chico in 142A, 32, Mahatma Gandhi, Civil Lines, Allahabad has been rated 4.5 which has average cost for two people as 800
+      - Sagar Ratna in 3/3, Hashimpur Road, Balson Crossing, Near Anand Bhawan, Tagore Town, Allahabad has been rated 4.4 which has average cost for two people as 800
+      - Pind Balluchi in 48/8, Stratchy Road, Civil Lines, Allahabad has been rated 4.3 which has average cost for two people as 1000
+      - Old School Cafe in 2nd Floor, 9-10 Tulsiani Grace, Civil Lines, Allahabad has been rated 4.3 which has average cost for two people as 1000
+      - Berco's in 17C, 0-1, Stretchy Road, Civil Lines, Allahabad has been rated 4.2 which has average cost for two people as 1600
+      - Moti Mahal Delux in Second Floor, Vinayak City Center Mall, SP Marg, Civil Lines, Allahabad has been rated 4.1 which has average cost for two people as 850
+      - Hotel Kanha Shyam in Allahabad HO, Civil Lines, Allahabad has been rated 4.1 which has average cost for two people as 900
+      - Kohinoor Restaurant in LG1 - LG2, Lower Ground Floor, Vinayak Tower, MG Marg, Civil Lines, Allahabad has been rated 4.1 which has average cost for two people as 800
+  - action: utter_ask_mail_send
+  - intent: mailid
+    entities:
+    - emailid: mkbond777@gmail.com
+  - slot_was_set:
+    - emailid: mkbond777@gmail.com
+  - action: action_send_mail
+  - slot_was_set:
+    - emailid: mkbond777@gmail.com
+  - intent: affirm
+  - action: utter_goodbye

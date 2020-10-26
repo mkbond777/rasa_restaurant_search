@@ -26,9 +26,10 @@ nlu:
     - I am hungary
     - [Bangalore]{"entity": "location", "value": "Bengaluru"}
     - [North Indian](cuisine)
-    - Can you suggest some good restaurants in [kolkata](location)
-    - [American](cuisine)
-    - [low](budget_type)
+    - Can you suggest some good restaurants in [Rishikesh](location)
+    - Okay. Show me some in [Allahabad](location)
+    - [Chinese]{"entity": "cuisine", "value": "chinese"}
+    - [high](budget_type)
 - intent: affirm
   examples: |
     - yes
@@ -39,6 +40,7 @@ nlu:
   examples: |
     - [mkbond777@gmail.com](emailid)
     - [mkbond777@outlook.com](emailid)
+    - yes. Please send it to [mkbond777@gmail.com](emailid)
 - intent: negate
   examples: |
     - no
